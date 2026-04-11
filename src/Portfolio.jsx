@@ -833,7 +833,7 @@ export default function Portfolio() {
       }}>
         Hi, I'm <span className="shimmer-text">Gunika</span><br/>
         <span style={{ color:"rgba(255,255,255,.9)" }}>
-          Crafting Modern Web Experiences
+          Full-Stack Developer
         </span>
       </motion.h1>
 
