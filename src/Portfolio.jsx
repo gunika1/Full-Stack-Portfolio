@@ -80,6 +80,7 @@ const item = {
         },
   },
 };
+
 /* ══════════════════════════════════════════════
    GLASS BUTTON
 ══════════════════════════════════════════════ */
@@ -435,6 +436,7 @@ const certs = [
 
 const SECTIONS = ["home","about","skills","projects","certifications","contact"];
 
+
 /* ══════════════════════════════════════════════
    MAIN
 ══════════════════════════════════════════════ */
@@ -444,7 +446,15 @@ export default function Portfolio() {
   const [typed, setTyped] = useState("");
   const roles = ["Full Stack Developer","BCA Student @ HPU","MERN Stack Dev","UI/UX Enthusiast","Problem Solver"];
   const roleRef = useRef(0), charRef = useRef(0), deletingRef = useRef(false);
-
+useEffect(() => {
+  const timeout = setTimeout(() => {
+    document.querySelectorAll("[data-width]").forEach((el) => {
+      el.style.width = el.getAttribute("data-width") + "%";
+      el.style.transition = "width 1.2s cubic-bezier(0.4, 0, 0.2, 1)";
+    });
+  }, 600);
+  return () => clearTimeout(timeout);
+}, []);
   // Typewriter
   useEffect(() => {
     let t;
@@ -1109,197 +1119,207 @@ export default function Portfolio() {
 </section>
 
         {/* ══════════ SKILLS ══════════ */}
-        <section
-  id="skills"
-  style={{
-    padding: "120px 60px",
-    position: "relative",
-    zIndex: 10,
-  }}
->
-  <style>{`
-    .skills-wrap {
-      max-width: 1100px;
-      margin: auto;
-      text-align: center;
-      opacity: 0;
-      transform: translateY(80px);
-      transition: 1s ease;
-    }
-
-    .skills-wrap.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .skills-title {
-      font-size: clamp(2rem,3vw,2.8rem);
-      color: #fff;
-      margin-bottom: 70px;
-      font-weight: 700;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(110px,1fr));
-      gap: 24px;
-    }
-
-    .card {
-      height: 110px;
-      border-radius: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      transition: all 0.5s ease;
-      cursor: pointer;
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255,255,255,0.08);
-      opacity: 0;
-    }
-
-    /* LEFT RIGHT ENTRY */
-    .card.left {
-      transform: translateX(-80px) scale(0.8);
-    }
-
-    .card.right {
-      transform: translateX(80px) scale(0.8);
-    }
-
-    .skills-wrap.show .card {
-      opacity: 1;
-      transform: translateX(0) scale(1);
-    }
-
-    /* FLOAT */
-    .card {
-      animation: float 4s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%,100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
-
-    .card img {
-      width: 38px;
-      height: 38px;
-      object-fit: contain;
-      margin-bottom: 8px;
-      transition: 0.4s;
-      filter: drop-shadow(0 0 10px rgba(99,102,241,0.6));
-    }
-
-    .card span {
-      font-size: 12px;
-      color: rgba(255,255,255,0.75);
-      transition: 0.3s;
-    }
-
-    /* NEON BORDER */
-    .card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      padding: 1px;
-      background: linear-gradient(135deg,#6366f1,#22d3ee,#a855f7);
-      -webkit-mask:
-        linear-gradient(#000 0 0) content-box,
-        linear-gradient(#000 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      animation: glow 3s linear infinite;
-    }
-
-    @keyframes glow {
-      0% { filter: hue-rotate(0deg); }
-      100% { filter: hue-rotate(360deg); }
-    }
-
-    /* HOVER */
-    .card:hover {
-      transform: scale(1.2) rotate(5deg);
-      box-shadow:
-        0 0 30px rgba(99,102,241,0.8),
-        0 0 80px rgba(34,211,238,0.5);
-      z-index: 5;
-    }
-
-    .card:hover img {
-      transform: scale(1.3) rotate(-8deg);
-    }
-
-    .card:hover span {
-      color: #fff;
-      text-shadow: 0 0 12px rgba(99,102,241,1);
-    }
-  `}</style>
-
-  <div
-    className="skills-wrap"
-    ref={(el) => {
-      if (!el) return;
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          entry.isIntersecting
-            ? el.classList.add("show")
-            : el.classList.remove("show");
-        },
-        { threshold: 0.2 }
-      );
-      observer.observe(el);
+        
+<section className="py-24 flex flex-col items-center px-4">
+  {/* Title */}
+  <h2
+    style={{
+      fontSize: "2.5rem",
+      fontWeight: 700,
+      marginBottom: "4rem",
+      textAlign: "center",
+      zIndex: 1,
+      color: "#fff",
     }}
   >
-    <h2 className="skills-title">
-      My <span className="shimmer-text">Skills</span>
-    </h2>
+    My{" "}
+    <span
+      style={{
+        background: "linear-gradient(90deg, #c084fc, #60a5fa)",
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+      }}
+    >
+      Skills
+    </span>
+  </h2>
 
-    <div className="grid">
-
-      {[
-        ["html5","HTML"],
-        ["css3","CSS"],
-        ["javascript","JavaScript"],
-        ["react","React"],
-        ["tailwindcss","Tailwind"],
-        ["bootstrap","Bootstrap"],
-        ["nodejs","Node"],
-        ["express","Express"],
-        ["mongodb","MongoDB"],
-        ["mysql","MySQL"],
-        ["c","C"],
-        ["cplusplus","C++"],
-        ["git","Git"],
-        ["github","GitHub"],
-        ["amazonaws","AWS"],
-        ["api","REST API"]
-      ].map(([icon,name],i)=>(
-        <div className={`card ${i % 2 === 0 ? "left" : "right"}`} key={i}>
-          <img
-            src={
-              icon==="api"
-                ? "https://cdn-icons-png.flaticon.com/512/2165/2165004.png"
-                : icon==="amazonaws"
-                ? "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg"
-                : `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${icon}/${icon}-original.svg`
-            }
-            onError={(e)=>{
-              if(icon==="amazonaws"){
-                e.target.src="https://cdn-icons-png.flaticon.com/512/873/873120.png";
-              }
+  {/* Grid */}
+  <div
+    style={{
+      display: "grid",
+      gridTemplateColumns: "1fr 1fr",
+      gap: "20px",
+      width: "100%",
+      maxWidth: "760px",
+    }}
+  >
+    {[
+      {
+        title: "Frontend",
+        subtitle: "UI & Web Technologies",
+        icon: "🖥",
+        barFrom: "#818cf8",
+        barTo: "#a78bfa",
+        skills: [["HTML", 72], ["CSS", 68], ["JavaScript", 65], ["React", 70]],
+      },
+      {
+        title: "Backend",
+        subtitle: "Server & Databases",
+        icon: "⚙️",
+        barFrom: "#60a5fa",
+        barTo: "#22d3ee",
+        skills: [["Node.js", 63], ["Express", 60], ["MongoDB", 62], ["MySQL", 58]],
+      },
+      {
+        title: "Programming",
+        subtitle: "Systems Languages",
+        icon: "💡",
+        barFrom: "#fbbf24",
+        barTo: "#f59e0b",
+        skills: [["C", 55], ["C++", 58]],
+      },
+      {
+        title: "Tools & DevOps",
+        subtitle: "Version Control & Cloud",
+        icon: "🛠",
+        barFrom: "#34d399",
+        barTo: "#10b981",
+        skills: [["Git", 65], ["GitHub", 68], ["AWS", 50]],
+      },
+    ].map((cat, i) => (
+      <div
+        key={i}
+        style={{
+          background: "rgba(255,255,255,0.06)",
+          backdropFilter: "blur(20px)",
+          WebkitBackdropFilter: "blur(20px)",
+          border: "1px solid rgba(255,255,255,0.1)",
+          borderRadius: "18px",
+          padding: "24px",
+          opacity: 0,
+          transform: "translateY(30px)",
+          animation: "fadeUp 0.5s ease forwards",
+          animationDelay: `${i * 0.15}s`,
+        }}
+      >
+        {/* Header */}
+        <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "18px" }}>
+          <div
+            style={{
+              width: "42px",
+              height: "42px",
+              borderRadius: "12px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: "18px",
+              background: `${cat.barFrom}22`,
+              border: `1px solid ${cat.barFrom}44`,
+              flexShrink: 0,
+              opacity: 0,
+              transform: "scale(0.5)",
+              animation: "iconPop 0.4s ease forwards",
+              animationDelay: `${i * 0.15 + 0.3}s`,
             }}
-          />
-          <span>{name}</span>
+          >
+            {cat.icon}
+          </div>
+          <div>
+            <div style={{ fontSize: "14px", fontWeight: 600, color: "#fff" }}>{cat.title}</div>
+            <div style={{ fontSize: "11px", color: "rgba(255,255,255,0.4)", marginTop: "2px" }}>{cat.subtitle}</div>
+          </div>
         </div>
-      ))}
 
-    </div>
+        {/* Divider */}
+        <div
+          style={{
+            height: "1px",
+            marginBottom: "18px",
+            background: `linear-gradient(90deg, ${cat.barFrom}66, transparent)`,
+          }}
+        />
+
+        {/* Skills */}
+        {cat.skills.map(([name, val], j) => (
+          <div key={j} style={{ marginBottom: j === cat.skills.length - 1 ? 0 : "14px" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "6px" }}>
+              <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.6)" }}>{name}</span>
+              <span
+                style={{
+                  fontSize: "11px",
+                  fontWeight: 600,
+                  padding: "2px 7px",
+                  borderRadius: "6px",
+                  background: `${cat.barFrom}22`,
+                  color: cat.barFrom,
+                }}
+              >
+                {val}%
+              </span>
+            </div>
+
+            {/* Bar track */}
+            <div
+              style={{
+                width: "100%",
+                height: "6px",
+                background: "rgba(255,255,255,0.08)",
+                borderRadius: "99px",
+                overflow: "hidden",
+                position: "relative",
+              }}
+            >
+              {/* Filled bar */}
+              <div
+                data-width={val}
+                style={{
+                  height: "100%",
+                  borderRadius: "99px",
+                  background: `linear-gradient(90deg, ${cat.barFrom}, ${cat.barTo})`,
+                  boxShadow: `0 0 10px ${cat.barFrom}99`,
+                  width: "0%",
+                  position: "relative",
+                  overflow: "hidden",
+                }}
+              >
+                {/* Shimmer */}
+                <div
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: "-100%",
+                    width: "60%",
+                    height: "100%",
+                    background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent)",
+                    animation: "shimmer 2s ease-in-out infinite",
+                    animationDelay: `${1.5 + j * 0.2}s`,
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    ))}
   </div>
+
+  <style>{`
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes iconPop {
+      to { opacity: 1; transform: scale(1); }
+    }
+    @keyframes shimmer {
+      0% { left: -60%; }
+      100% { left: 110%; }
+    }
+  `}</style>
 </section>
+
+        
+
 
         {/* ══════════ PROJECTS ══════════ */}
       
@@ -1882,7 +1902,7 @@ export default function Portfolio() {
     WebkitBackgroundClip:"text",
     WebkitTextFillColor:"transparent"
   }}>
-    🎓 Education Timeline
+    🎓 Education 
   </h2>
 
   <div className="eduX-sec">
@@ -1890,9 +1910,12 @@ export default function Portfolio() {
     <div className="eduX-line"></div>
 
     {/* 10th */}
-    <div className="eduX-item eduX-left eduX-item1">
+    <div className="eduX-item eduX-left eduX-item1 w-20px bg-slate-700 rounded-4xl right-1">
       <div className="eduX-node"></div>
       <div className="eduX-title">📗 10th – 88% (CBSE)</div>
+      <div className="eduX-desc">
+        Completed 
+        </div>
       <div className="eduX-desc">
         Built a strong academic foundation with focus on Mathematics and Science.  
         Developed discipline, consistency, and a structured approach to learning.  
@@ -1901,9 +1924,10 @@ export default function Portfolio() {
     </div>
 
     {/* 12th */}
-    <div className="eduX-item eduX-right eduX-item2">
+    <div className="eduX-item eduX-right eduX-item2 bg-slate-700 rounded-4xl left-1">
       <div className="eduX-node"></div>
       <div className="eduX-title">📘 12th – Non-Medical (72%) (CBSE)</div>
+      <div className="eduX-desc">completed</div>
       <div className="eduX-desc">
         Studied Physics, Chemistry, and Mathematics with deep focus.  
         Improved logical reasoning, analytical thinking, and real-world problem-solving ability.  
@@ -1912,7 +1936,7 @@ export default function Portfolio() {
     </div>
 
     {/* BCA */}
-    <div className="eduX-item eduX-left eduX-item3" style={{ paddingBottom: "80px" }}>
+    <div className="eduX-item eduX-left eduX-item3 bg-slate-700 rounded-4xl right-1 w-20px h-63" style={{ paddingBottom: "80px" }}>
       <div className="eduX-node"></div>
       <div className="eduX-title">🎓 BCA – Result Awaited</div>
       <div className="eduX-desc">
