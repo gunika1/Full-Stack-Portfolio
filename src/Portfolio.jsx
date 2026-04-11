@@ -586,10 +586,12 @@ export default function Portfolio() {
         </li>
       ))}
       <li>
-        <GlassButton primary small>
-          Resume ↗
-        </GlassButton>
-      </li>
+  <a href="/Gunika.pdf" target="_blank" style={{ textDecoration: "none" }}>
+    <GlassButton primary small>
+      Resume ↗
+    </GlassButton>
+  </a>
+</li>
     </ul>
   </div>
 
@@ -1657,52 +1659,86 @@ export default function Portfolio() {
 
   <div className="certs">
 
-    <div className="cert">
-      <div className="content">
-        <h4>🤖 AI Virtual Internship</h4>
-        <p>SKILLRAAce · May–June 2024</p>
-        <p>Worked on AI basics, ML concepts and real-world use cases with hands-on practice.</p>
-      </div>
-      <a href="#" className="btn">View</a>
-    </div>
-
-    <div className="cert">
-      <div className="content">
-        <h4>BuildwithIndia</h4>
-        <p>Top 100 Teams</p>
-        <p>Built innovative project and competed among 25,000+ participants nationwide.</p>
-      </div>
-      <a href="#" className="btn">View</a>
-    </div>
-
-    <div className="cert">
-      <div className="content">
-        <h4>Google AI</h4>
-        <p>Coursera</p>
-        <p>Learned generative AI, prompt engineering and real-world AI tools usage.</p>
-      </div>
-      <a href="#" className="btn">View</a>
-    </div>
-
-    <div className="cert">
-      <div className="content">
-        <h4>IBM Web Dev</h4>
-        <p>Frontend</p>
-        <p>Strong foundation in HTML, CSS, JS and responsive UI development.</p>
-      </div>
-      <a href="#" className="btn">View</a>
-    </div>
-
-    <div className="cert">
-      <div className="content">
-        <h4>IBM Skills</h4>
-        <p>Soft Skills</p>
-        <p>Improved communication, teamwork and professional skills.</p>
-      </div>
-      <a href="#" className="btn">View</a>
-    </div>
-
+   <div className="cert">
+  <div className="content">
+    <h4>🤖 AI Virtual Internship</h4>
+    <p>SKILLRAAce · May–June 2024</p>
+    <p>Worked on AI basics, ML concepts and real-world use cases with hands-on practice.</p>
   </div>
+
+  <a
+    href="/Skill.pdf"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="btn"
+  >
+    View ↗
+  </a>
+</div>
+
+  <div className="cert">
+  <div className="content">
+    <h4>BuildwithIndia</h4>
+    <p>Top 100 Teams</p>
+    <p>Built innovative project and competed among 25,000+ participants nationwide.</p>
+  </div>
+
+  <a
+    href="/Build.pdf"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="btn"
+  >
+    View ↗
+  </a>
+</div>
+<div className="cert">
+  <div className="content">
+    <h4>Google AI</h4>
+    <p>Coursera</p>
+    <p>Learned generative AI, prompt engineering and real-world AI tools usage.</p>
+  </div>
+
+  <a href="/Google.pdf" target="_blank" className="btn">
+    View
+  </a>
+</div>
+
+   <div className="cert">
+  <div className="content">
+    <h4>IBM Web Dev</h4>
+    <p>Frontend</p>
+    <p>Strong foundation in HTML, CSS, JS and responsive UI development.</p>
+  </div>
+
+  <a
+    href="/web.pdf"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="btn"
+  >
+    View ↗
+  </a>
+</div>
+
+   <div className="cert">
+  <div className="content">
+    <h4>IBM Skills</h4>
+    <p>Soft Skills</p>
+    <p>Improved communication, teamwork and professional skills.</p>
+  </div>
+
+  <a
+    href="/soft.pdf"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="btn"
+  >
+    View ↗
+  </a>
+</div>
+
+</div>
 
 </section>
     
