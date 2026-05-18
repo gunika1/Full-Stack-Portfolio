@@ -786,7 +786,15 @@ useEffect(() => {
 >
 
     {/* LEFT */}
-    <div className="left-side" style={{ display: "flex", flexDirection: "column", gap: 22 }}>
+  <div
+  className="left-side"
+  style={{
+    display: "flex",
+    flexDirection: "column",
+    gap: 22,
+    paddingLeft: "40px",
+  }}
+>
 
       <motion.div
         variants={item}
