@@ -168,7 +168,8 @@ const OrbitSystem = () => (
     <div style={{
       position:"absolute", top:"50%", left:"50%",
       transform:"translate(-50%,-50%)",
-      width:340, height:420,
+      width:"55%",
+height:"68%",
       zIndex:50,
       background:"none", border:"none", boxShadow:"none",
     }}>
@@ -740,17 +741,10 @@ useEffect(() => {
         {/* ══════════ HERO ══════════ */}
 
 
+
 <section
   id="home"
-  className="hero-section"
-  style={{
-    position: "relative",
-    zIndex: 10,
-    minHeight: "100vh",
-    display: "flex",
-    alignItems: "center",
-    padding: "140px 80px 60px", // 🔥 navbar overlap fix
-  }}
+  className="hero-section relative z-10 min-h-screen flex items-center px-5 pt-28 pb-10 md:px-10 lg:px-20 lg:pt-36"
 >
 
 <style>{`
@@ -784,21 +778,12 @@ useEffect(() => {
 `}</style>
 
   <motion.div
-    className="hero-grid"
-    variants={container}
-    initial="hidden"
-    whileInView="show"
-    viewport={{ once: false, amount: 0.3 }}
-    style={{
-      width: "100%",
-      maxWidth: 1200,
-      margin: "0 auto",
-      display: "grid",
-      gridTemplateColumns: "1fr 1fr",
-      gap: 64,
-      alignItems: "center",
-    }}
-  >
+  className="hero-grid w-full max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center"
+  variants={container}
+  initial="hidden"
+  whileInView="show"
+  viewport={{ once: false, amount: 0.3 }}
+>
 
     {/* LEFT */}
     <div className="left-side" style={{ display: "flex", flexDirection: "column", gap: 22 }}>
@@ -920,13 +905,12 @@ useEffect(() => {
 
     {/* RIGHT */}
     <motion.div
-      className="right-side"
-      initial={{ opacity: 0, scale: 0.7, rotate: -15 }}
-      whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-      viewport={{ once: false }}
-      transition={{ duration: 1.2, type: "spring" }}
-      style={{ display:"flex", justifyContent:"center" }}
-    >
+  className="right-side flex justify-center scale-[0.52] sm:scale-[0.65] md:scale-[0.78] lg:scale-100 -my-28 sm:-my-20 md:-my-10 lg:my-0"
+  initial={{ opacity: 0, scale: 0.7, rotate: -15 }}
+  whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+  viewport={{ once: false }}
+  transition={{ duration: 1.2, type: "spring" }}
+>
       <OrbitSystem />
     </motion.div>
 
@@ -1120,7 +1104,10 @@ useEffect(() => {
 
         {/* ══════════ SKILLS ══════════ */}
         
-<section className="py-24 flex flex-col items-center px-4">
+<section
+  id="skills"
+  className="py-16 md:py-24 flex flex-col items-center px-4"
+>
   {/* Title */}
   <h2
     style={{
@@ -1145,15 +1132,7 @@ useEffect(() => {
   </h2>
 
   {/* Grid */}
-  <div
-    style={{
-      display: "grid",
-      gridTemplateColumns: "1fr 1fr",
-      gap: "20px",
-      width: "100%",
-      maxWidth: "760px",
-    }}
-  >
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-5 w-full max-w-[760px]">
     {[
       {
         title: "Frontend",
@@ -1322,14 +1301,9 @@ useEffect(() => {
 
 
         {/* ══════════ PROJECTS ══════════ */}
-      
-        <section
+      <section
   id="projects"
-  style={{
-    position: "relative",
-    zIndex: 10,
-    padding: "100px 60px",
-  }}
+  className="relative z-10 px-5 py-16 md:px-10 lg:px-[60px] lg:py-[100px]"
 >
   <style>{`
     .projects-wrap {
@@ -1498,7 +1472,7 @@ useEffect(() => {
       Featured <span className="shimmer-text">Projects</span>
     </h2>
 
-    <div className="zigzag-wrap">
+    <div className="zigzag-wrap grid grid-cols-1 lg:grid-cols-3 gap-7 items-center">
 
       {/* LEFT */}
       <div className="col left">
@@ -1579,7 +1553,10 @@ useEffect(() => {
 </section>
 
         {/* ══════════ CERTIFICATIONS ══════════ */}
-        <section id="certifications" style={{ position:"relative", zIndex:10, padding:"60px 80px" }}>
+        <section
+  id="certifications"
+  className="relative z-10 px-5 py-14 md:px-10 lg:px-20 lg:py-[60px]"
+>
           <div style={{ maxWidth:1000, margin:"0 auto" }}>
             <div style={{ textAlign:"center", marginBottom:48 }}>
               <p style={{ fontSize:11, textTransform:"uppercase", letterSpacing:".12em", color:"#fbbf24", marginBottom:10 }}>Achievements</p>
@@ -1770,128 +1747,147 @@ useEffect(() => {
         </section>
         <section style={{ padding: "80px 20px" }}>
 
-  <style>{`
+ <style>{`
 
+  .eduX-sec {
+    position: relative;
+    max-width: 1000px;
+    margin: auto;
+    color: #fff;
+  }
+
+  .eduX-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 3px;
+    height: 100%;
+    transform: translateX(-50%);
+    background: rgba(255,255,255,0.08);
+    overflow: hidden;
+  }
+
+  .eduX-line::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 120px;
+    background: linear-gradient(to bottom, transparent, #a855f7, transparent);
+    animation: eduX-travel 5s linear infinite;
+  }
+
+  @keyframes eduX-travel {
+    0% { top: -120px; }
+    100% { top: 100%; }
+  }
+
+  .eduX-item {
+    position: relative;
+    width: 50%;
+    padding: 50px 30px;
+    background: rgba(30,41,59,0.85);
+    border-radius: 28px;
+    margin-bottom: 35px;
+  }
+
+  .eduX-left {
+    text-align: right;
+  }
+
+  .eduX-right {
+    margin-left: 50%;
+    text-align: left;
+  }
+
+  .eduX-node {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translate(-50%, -50%);
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #666;
+    z-index: 5;
+  }
+
+  .eduX-right .eduX-node {
+    left: 0%;
+  }
+
+  .eduX-title {
+    font-size: 18px;
+    font-weight: 700;
+    transition: 0.3s;
+  }
+
+  .eduX-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.75);
+    margin-top: 10px;
+    line-height: 1.7;
+  }
+
+  .eduX-item1 .eduX-title { animation: eduX-glow 5s infinite; }
+  .eduX-item2 .eduX-title { animation: eduX-glow 5s infinite 1.6s; }
+  .eduX-item3 .eduX-title { animation: eduX-glow 5s infinite 3.2s; }
+
+  .eduX-item1 .eduX-node { animation: eduX-nodeGlow 5s infinite; }
+  .eduX-item2 .eduX-node { animation: eduX-nodeGlow 5s infinite 1.6s; }
+  .eduX-item3 .eduX-node { animation: eduX-nodeGlow 5s infinite 3.2s; }
+
+  @keyframes eduX-glow {
+    0%,100% { color:#fff; text-shadow:none; }
+    20% {
+      color:#a855f7;
+      text-shadow: 0 0 14px #a855f7, 0 0 28px #22d3ee;
+    }
+    40% { color:#fff; }
+  }
+
+  @keyframes eduX-nodeGlow {
+    0%,100% { background:#666; }
+    20% {
+      background:#a855f7;
+      box-shadow: 0 0 18px #a855f7;
+    }
+  }
+
+  @media(max-width:700px) {
     .eduX-sec {
-      position: relative;
-      max-width: 1000px;
-      margin: auto;
-      color: #fff;
+      max-width: 100%;
+      padding-left: 25px;
     }
 
-    /* LINE */
     .eduX-line {
-      position: absolute;
-      left: 50%;
-      top: 0;
-      width: 3px;
-      height: 100%;
-      transform: translateX(-50%);
-      background: rgba(255,255,255,0.08);
-      overflow: hidden;
+      left: 10px;
+      transform: none;
     }
 
-    /* MOVING GLOW */
-    .eduX-line::after {
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 120px;
-      background: linear-gradient(to bottom, transparent, #a855f7, transparent);
-      animation: eduX-travel 5s linear infinite;
-    }
-
-    @keyframes eduX-travel {
-      0% { top: -120px; }
-      100% { top: 100%; }
-    }
-
-    /* ITEMS */
     .eduX-item {
-      position: relative;
-      width: 50%;
-      padding: 50px 30px;
+      width: 100% !important;
+      margin-left: 0 !important;
+      padding: 24px 18px 24px 32px !important;
+      text-align: left !important;
+      margin-bottom: 28px;
     }
 
-    .eduX-left { text-align: right; }
-    .eduX-right { margin-left: 50%; text-align: left; }
-
-    /* NODE */
     .eduX-node {
-      position: absolute;
-      top: 50%;
-      left: 100%;
-      transform: translate(-50%, -50%);
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background: #666;
+      left: -15px !important;
     }
 
-    .eduX-right .eduX-node {
-      left: 0%;
-    }
-
-    /* TEXT */
     .eduX-title {
-      font-size: 18px;
-      font-weight: 700;
-      transition: 0.3s;
+      font-size: 16px;
+      line-height: 1.4;
     }
 
     .eduX-desc {
-      font-size: 13px;
-      color: rgba(255,255,255,.7);
-      margin-top: 10px;
-      line-height: 1.7;
+      font-size: 12.5px;
+      line-height: 1.6;
     }
+  }
 
-    /* SYNC GLOW */
-    .eduX-item1 .eduX-title { animation: eduX-glow 5s infinite; }
-    .eduX-item2 .eduX-title { animation: eduX-glow 5s infinite 1.6s; }
-    .eduX-item3 .eduX-title { animation: eduX-glow 5s infinite 3.2s; }
-
-    .eduX-item1 .eduX-node { animation: eduX-nodeGlow 5s infinite; }
-    .eduX-item2 .eduX-node { animation: eduX-nodeGlow 5s infinite 1.6s; }
-    .eduX-item3 .eduX-node { animation: eduX-nodeGlow 5s infinite 3.2s; }
-
-    @keyframes eduX-glow {
-      0%,100% { color:#fff; text-shadow:none; }
-      20% {
-        color:#a855f7;
-        text-shadow: 0 0 14px #a855f7, 0 0 28px #22d3ee;
-      }
-      40% { color:#fff; }
-    }
-
-    @keyframes eduX-nodeGlow {
-      0%,100% { background:#666; }
-      20% {
-        background:#a855f7;
-        box-shadow: 0 0 18px #a855f7;
-      }
-    }
-
-    /* MOBILE */
-    @media(max-width:700px){
-
-      .eduX-line {
-        left: 20px;
-      }
-
-      .eduX-item {
-        width: 100%;
-        margin-left: 0 !important;
-        padding: 30px 20px 30px 60px;
-        text-align: left !important;
-      }
-
-      .eduX-node {
-        left: 20px !important;
-      }
-    }
-
-  `}</style>
+`}</style>
 
   <h2 style={{
     textAlign:"center",
@@ -1936,7 +1932,7 @@ useEffect(() => {
     </div>
 
     {/* BCA */}
-    <div className="eduX-item eduX-left eduX-item3 bg-slate-700 rounded-4xl right-1 w-20px h-63" style={{ paddingBottom: "80px" }}>
+    <div className="eduX-item eduX-left eduX-item3" style={{ paddingBottom: "80px" }}>
       <div className="eduX-node"></div>
       <div className="eduX-title">🎓 BCA – Result Awaited</div>
       <div className="eduX-desc">
