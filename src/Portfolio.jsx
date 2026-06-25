@@ -1955,7 +1955,7 @@ useEffect(() => {
           background:"linear-gradient(90deg,#a855f7,#22d3ee)",
           boxShadow:"0 0 12px #a855f7"
         }}>
-          Result Awaited
+          7.23 CGPA
         </span>
       </div>
     </div>
